@@ -1,0 +1,10 @@
+{
+    "name":"TrueConf API",
+    "description": "Testing",
+    "require": {
+        "slim/slim": "4.*",
+        "php-di/php-di": "^6.1",
+        "slim/psr7": "^1.1",
+        "slim/twig-view": "^3.1"
+    }
+}
