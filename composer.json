@@ -1,6 +1,12 @@
 {
     "name":"TrueConf API",
     "description": "Testing",
+    "authors": [
+        {
+            "name": "makcim512",
+            "email": "makcim512@gmail.com"
+        }
+    ],
     "require": {
         "slim/slim": "4.*",
         "php-di/php-di": "^6.1",
