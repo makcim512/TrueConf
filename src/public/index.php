@@ -86,8 +86,9 @@
     $app->post("/api/user/get", function(Request $req, Response $res, $args)
     {
         $data           = $req->getParsedBody();            // Get json params
-        $manipulation   = API::getUser( $data['id'] );
+        $manipulation   = API::getUser( $data['id'] );      // Get user at ID
 
+        // Rsponse result
                 $res->getBody()->write( $manipulation );
         return  $res->withHeader('Content-Type', 'aplication/json');
     });
@@ -100,15 +101,17 @@
                                     $data['id'], 
                                     $data['name']
                                 );
-
+        
+        // Rsponse result
                 $res->getBody()->write( $manipulation );
         return  $res->withHeader('Content-Type', 'aplication/json');
     });
 
+    // Delete user router
     $app->post("/api/user/delete", function(Request $req, Response $res, $args)
     {
         $data           = $req->getParsedBody();                      // Get json params
-        $manipulation   = Api::deleteUser($data['id']);
+        $manipulation   = Api::deleteUser($data['id']);               // delete user at id
 
                 $res->getBody()->write( $manipulation );
         return  $res->withHeader('Content-Type', 'aplication/json');

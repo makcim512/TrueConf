@@ -77,7 +77,7 @@ class Api {
 
         $data = JsonDB::select($id);    // Get user by id
 
-        // We return the result of the request
+        //  Check if the user is found
         if ( $data ) {
             return self::result("ok", [
                 'id'    => $data['data']['id'],
@@ -91,12 +91,13 @@ class Api {
     // Update user name
     public static function UpdateUser( $id, $name ) { 
 
-        // We return the result of the request
+        // Testing the string for validity
         if ( !is_numeric($id) or !$name ) 
             return self::result("ok", "Не верный формат запроса!");
 
         $data = JsonDB::update($id, $name);
         
+        // Check if user data is updated
         if ( $data ) {
             return self::result("ok", "Имя успешно обновлено!");
         } else {
@@ -104,11 +105,14 @@ class Api {
         }
     }
 
+    // Function delete user at id
     public static function deleteUser( $id ) { 
         
+        // Testing the string for validity
         if ( !is_numeric($id) ) 
             return self::result("error", "Не верный формат запроса!");
 
+        // Check if user is deleted
         if ( JsonDB::delete($id) ) {
             return self::result("ok", "Пользователь удален!");
         } else {
