@@ -7,6 +7,16 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ src/public/index.php [QSA,L]
 ```
+и
+
+```
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*) index.php?&1 [QSA,L]
+```
+в папке `src/public`;
 
 ## Get all users
 Для получения списка пользователей, отправте запрос без параметров по адресу `/api/user`.
@@ -22,3 +32,7 @@ RewriteRule ^ src/public/index.php [QSA,L]
 ## User Editing
 Редактирование пользователя производится путем отправки `POST` запрос по адресу `/api/user/updata` параметром запроса должен быть `JSON` массив.
 Массиив должен содержать 2 параметра `id` типа `Intager` ID пользователя которому нужно изменить имя, `name` типа `String` новое имя пользователя.  ___Параметры не должены быть пустыми, в противном случае вы получите ошибку.___
+
+## User delete
+Для удаления пользователя отправте `POST` запрос по адресу `/api/user/delete` параметром запроса должен быть `JSON` массив.
+Массиив должен содержать параметр `id` типа `Intager` - id удаляемого пользователя. ___Параметр не должен быть пустым, в противном случае вы получите ошибку.___
