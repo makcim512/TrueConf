@@ -5,16 +5,19 @@ namespace app;
 
 class JsonDB {
     
-    public static $path = __DIR__ . '/../db/database.json';
+    public static $path = __DIR__ . '/../public/db/database.json';
 
     // created database file
     protected static function creadFile(){
+        if ( !file_exists( __DIR__ . "/../public/db/") )
+            mkdir( __DIR__ . '/../public/db/', 0777, true);
+
         $creatFile = fopen(self::$path, "w"); // Создаем сам файл
 
         // Создаем структуру новой базы
         $newBD = [
             "increment" => 0,   // Инкремент
-            "content"   => []   // Контент
+            "users"   => []   // Контент
         ];
 
         $newBD = json_encode($newBD);
